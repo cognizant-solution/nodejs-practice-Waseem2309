@@ -1,0 +1,102 @@
+1) Create a NodeJS application with a basic function to route to two different pages one as the Home page and next About page
+
+----->const express = require('express');
+      const app = express();
+      const PORT = process.env.PORT || 3000;
+       app.get('/', (req, res) => {
+          res.send('<h1>Home Page</h1><p>Welcome to the home page!</p>');
+      });
+      app.get('/about', (req, res) => {
+          res.send('<h1>About Page</h1><p>This is the about page.</p>');
+      });
+      app.listen(PORT, () => {
+          console.log(`Server is running on http://localhost:${PORT}`);
+      });
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------ 
+2) Create a component called App that displays the number of times the user has hovered a button with the text “Hover Me”. 
+The count should be displayed in an h1 element and updated each time the user hovers over the button. The initial value of the count should be set to 0.
+
+----->index.html 
+      <!DOCTYPE html>
+      <html lang="en">
+      <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Hover Counter</title>
+      </head>
+      <body>
+      <h1>Hover Count: <span id="hoverCount">0</span></h1>
+      <button id="hoverButton">Hover Me</button>
+          <script src="script.js"></script>
+      </body>
+      </html>
+      
+      ---------------------------------------------
+      script.js
+      
+      let hoverCount = 0;
+      const hoverButton = document.getElementById('hoverButton');
+      const hoverCountDisplay = document.getElementById('hoverCount');
+      hoverButton.addEventListener('mouseenter', () => {
+          hoverCount++; 
+          hoverCountDisplay.textContent = hoverCount; 
+      });
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+3) Create a component called Calc that can find the difference between the given two integer values.
+
+----->class Calc {
+         static difference(a, b)
+         {
+         return a - b;
+         }
+      }
+      const result= Calc.difference(5, 2);
+      console.log('The difference is:',result) 
+ 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+4) Create an application that holds three radio buttons with labels as SQL, Python and NodeJS group them to form into a group called as Technologies.
+Allow the user to select any one of the radio button and display the selected technology.
+
+-----><!DOCTYPE html>
+      <html lang="en">
+      <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Select Technology</title>
+      </head>
+      <body>
+      <h2>Select Your Technology</h2>
+       
+      <div>
+      <label><input type="radio" name="technology" value="SQL" onclick="displaySelection()"> SQL</label>
+      <label><input type="radio" name="technology" value="Python" onclick="displaySelection()"> Python</label>
+      <label><input type="radio" name="technology" value="Node.js" onclick="displaySelection()"> Node.js</label>
+      </div>
+      <div id="selected-technology">
+      <p>Please select a technology.</p>
+      </div>
+      <script src=script.js></script>
+      </body>
+      </html>
+ ------------------------------------------------------------------------------------------------------
+      function displaySelection() {
+           const selectedTech = document.querySelector('input[name="technology"]:checked');
+           const selectedTechDiv = document.getElementById('selected-technology');
+           if (selectedTech) {
+               selectedTechDiv.innerHTML = `<p>You selected: <strong>${selectedTech.value}</strong></p>`;
+         }
+      }
+ ---------------------------------------------------------------------------------------------------------------------------------------------------------------
+5) Create an application to display the host OS name and the uptime.
+
+----->const os = require('os');
+      const osName = os.type();
+      const uptimeinSeconds = os.uptime();
+      const uptimeinHours = Math.floor(uptimeinSeconds / 3600);
+      const uptimeinMinutes = Math.floor((uptimeinSeconds % 3600) / 60);
+      const uptimeSeconds = Math.floor(uptimeinSeconds % 60);
+      console.log(`Host OS name: ${osName}`);
+      console.log(`Uptime of OS: hours: ${uptimeinHours}, minutes: ${uptimeinMinutes}, seconds: ${uptimeSeconds}`);
+ 
+
+
